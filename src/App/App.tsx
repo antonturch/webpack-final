@@ -2,8 +2,8 @@ import React, {lazy, Suspense} from 'react'
 import {Route, Routes} from 'react-router-dom';
 import './app.scss'
 
-const Products = lazy(() => import('./Products'));
-const Order = lazy(() => import('./Order'));
+const Products = lazy(() => import('../Products/Products'));
+const Order = lazy(() => import('../Order/Order'));
 
 export const App = () => {
   return (
