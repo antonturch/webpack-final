@@ -62,7 +62,10 @@ module.exports = ({develop}) => ({
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    alias: {
+      "@Modules": path.resolve(__dirname, 'src/modules')
+    },
+    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
     new HTMLWebpackPlugin({
@@ -83,7 +86,7 @@ module.exports = ({develop}) => ({
   devServer: {
     open: true,
     hot: true,
-    port: 8080,
+    port: 8081,
     historyApiFallback: true,
     // contentBase: path.join(__dirname, 'public')
   }

@@ -1,15 +1,12 @@
-import React from 'react'
-import {makeLogger} from 'ts-loader/dist/logger';
-import {useLocation} from 'react-router-dom';
+import React, {FC} from 'react'
+import './index.scss'
 
-const Products = () => {
-  const location = useLocation()
-  console.log('Products')
+export const Products: FC = () => {
 
-  console.log(location.pathname)
   return (
-    <div>Products</div>
+    <div className="products-wrapper">
+      Products
+    </div>
   )
 }
 
-export default Products
