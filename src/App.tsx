@@ -1,7 +1,7 @@
 import React from 'react'
-import {Header} from '@Modules/Header';
-import {Routing} from './Router';
+import {Routing} from './router';
 import './app.scss'
+import {Header} from '@modules/header';
 
 
 export const App = () => {

@@ -1,12 +1,12 @@
 import React, {lazy, Suspense} from 'react';
 import {Route, Routes} from 'react-router-dom';
 import {ROUTE_PATHS} from '../consts/routePaths';
-import {Registration} from '@Modules/Registration';
-import {Login} from '@Modules/Login';
+import {Registration} from '@Modules/registration';
+import {Login} from '@Modules/login';
 
 
-const Products = lazy(() => import('@Modules/Products'));
-const Orders = lazy(() => import('@Modules/Orders'));
+const Products = lazy(() => import('@Modules/products'));
+const Orders = lazy(() => import('@Modules/orders'));
 
 export const Routing = () => {
   return (

@@ -1,8 +1,8 @@
 import React from 'react';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
-import {TEMPLATEERRORSTRING} from '@Modules/Registration/Registration';
-import '../Registration/index.scss'
+import {TEMPLATEERRORSTRING} from '@Modules/registration/Registration';
+import '../registration/index.scss'
 
 
 export const Login = () => {
