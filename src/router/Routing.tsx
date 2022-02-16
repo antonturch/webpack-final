@@ -1,8 +1,8 @@
 import React, { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import { ROUTE_PATHS } from "../consts/routePaths";
 import { Registration } from "@modules/registration";
 import { Login } from "@modules/login";
+import { ROUTE_PATHS } from "../consts/routePaths";
 
 const Products = lazy(() => import("@modules/products"));
 const Orders = lazy(() => import("@modules/orders"));

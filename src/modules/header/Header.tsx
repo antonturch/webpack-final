@@ -1,6 +1,6 @@
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { ROUTE_PATHS } from "../../consts/routePaths";
-import React from "react";
 import "./index.scss";
 
 const links = (

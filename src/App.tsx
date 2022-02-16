@@ -1,19 +1,13 @@
-import React from 'react'
-import {Routing} from './router';
-import './app.scss'
-import {Header} from '@modules/header';
-
+import React from "react";
+import { Header } from "@modules/header";
+import { Routing } from "./router";
+import "./app.scss";
 
 export const App = () => {
   return (
     <div className="app">
-      <Header/>
-      <Routing/>
+      <Header />
+      <Routing />
     </div>
-  )
-}
-
-
-
-
-
+  );
+};
