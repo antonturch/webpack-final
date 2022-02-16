@@ -4,12 +4,28 @@ import { ROUTE_PATHS } from "../../consts/routePaths";
 import "./index.scss";
 
 const links = (
-  <div className="navigation-wrapper">
-    <NavLink to={ROUTE_PATHS.PRODUCTS}>Products</NavLink>
-    <NavLink to={ROUTE_PATHS.ORDERS}>Orders</NavLink>
-    <NavLink to={ROUTE_PATHS.SIGNUP}>Sign up</NavLink>
-    <NavLink to={ROUTE_PATHS.SIGNIN}>Sign in</NavLink>
-  </div>
+  <ul className="nav-items">
+    <li>
+      <NavLink className="nav-item" to={ROUTE_PATHS.PRODUCTS}>
+        Products
+      </NavLink>
+    </li>
+    <li>
+      <NavLink className="nav-item" to={ROUTE_PATHS.ORDERS}>
+        Orders
+      </NavLink>
+    </li>
+    <li>
+      <NavLink className="nav-item" to={ROUTE_PATHS.SIGNUP}>
+        Sign up
+      </NavLink>
+    </li>
+    <li>
+      <NavLink className="nav-item" to={ROUTE_PATHS.SIGNIN}>
+        Sign in
+      </NavLink>
+    </li>
+  </ul>
 );
 
 export const Header = () => {

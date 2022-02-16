@@ -30,111 +30,127 @@ export const Registration = () => {
     },
   });
   return (
-    <div className="container">
-      <h1>Sign up to continue</h1>
+    <div className="registration-and-login-form-container">
+      <h1 className="registration-and-login-form__title">
+        Sign up to continue
+      </h1>
       <form onSubmit={formik.handleSubmit}>
-        <div className="form-row">
-          <label htmlFor="email">Email</label>
+        <div className="form-row-item">
+          <label className="form-row-title" htmlFor="email">
+            Email
+          </label>
           <input
+            className="form-row-input"
+            {...(formik.touched.email && formik.errors.email
+              ? "input-error"
+              : "")}
             id="email"
             name="email"
             type="email"
-            className={
-              formik.touched.email && formik.errors.email ? "input-error" : ""
-            }
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
           {formik.touched.email && formik.errors.email ? (
-            <span className="error">{formik.errors.email}</span>
+            <span className="error-message">{formik.errors.email}</span>
           ) : null}
         </div>
 
-        <div className="form-row">
-          <label htmlFor="password">Password</label>
+        <div className="form-row-item">
+          <label className="form-row-title" htmlFor="password">
+            Password
+          </label>
           <input
+            className="form-row-input"
+            {...(formik.touched.password && formik.errors.password
+              ? "input-error"
+              : "")}
             id="password"
             name="password"
             type="password"
-            className={
-              formik.touched.password && formik.errors.password
-                ? "input-error"
-                : ""
-            }
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
           />
           {formik.touched.password && formik.errors.password ? (
-            <span className="error">{formik.errors.password}</span>
+            <span className="error-message">{formik.errors.password}</span>
           ) : null}
         </div>
 
-        <div className="form-row">
-          <label htmlFor="confirmPassword">Confirm password</label>
+        <div className="form-row-item">
+          <label className="form-row-title" htmlFor="confirmPassword">
+            Confirm password
+          </label>
           <input
+            className="form-row-input"
+            {...(formik.touched.confirmPassword && formik.errors.confirmPassword
+              ? "input-error"
+              : "")}
             id="confirmPassword"
             name="confirmPassword"
             type="password"
-            className={
-              formik.touched.confirmPassword && formik.errors.confirmPassword
-                ? "input-error"
-                : ""
-            }
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.confirmPassword}
           />
           {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-            <span className="error">{formik.errors.confirmPassword}</span>
+            <span className="error-message">
+              {formik.errors.confirmPassword}
+            </span>
           ) : null}
           {formik.values.confirmPassword !== formik.values.password ? (
-            <span className="error">Passwords are different</span>
+            <span className="error-message">Passwords are different</span>
           ) : null}
         </div>
 
-        <div className="form-row">
-          <label htmlFor="firstName">First name</label>
+        <div className="form-row-item">
+          <label className="form-row-title" htmlFor="firstName">
+            First name
+          </label>
           <input
+            className="form-row-input"
+            {...(formik.touched.firstName && formik.errors.firstName
+              ? "input-error"
+              : "")}
             id="firstName"
             name="firstName"
             type="text"
-            className={
-              formik.touched.firstName && formik.errors.firstName
-                ? "input-error"
-                : ""
-            }
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.firstName}
           />
           {formik.touched.firstName && formik.errors.firstName ? (
-            <span className="error">{formik.errors.firstName}</span>
+            <span className="error-message">{formik.errors.firstName}</span>
           ) : null}
         </div>
 
-        <div className="form-row">
-          <label htmlFor="lastName">Last name</label>
+        <div className="form-row-item">
+          <label className="form-row-title" htmlFor="lastName">
+            Last name
+          </label>
           <input
+            className="form-row-input"
+            {...(formik.touched.lastName && formik.errors.lastName
+              ? "input-error"
+              : "")}
             id="lastName"
             name="lastName"
             type="text"
-            className={
-              formik.touched.lastName && formik.errors.lastName
-                ? "input-error"
-                : ""
-            }
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.lastName}
           />
           {formik.touched.lastName && formik.errors.lastName ? (
-            <span className="error">{formik.errors.lastName}</span>
+            <span className="error-message">{formik.errors.lastName}</span>
           ) : null}
         </div>
 
-        <button type="submit">Submit</button>
+        <button
+          className="registration-and-login-form__submit-btn"
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );
