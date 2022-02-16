@@ -29,5 +29,5 @@ const links = (
 );
 
 export const Header = () => {
-  return <section className="header-wrapper">{links}</section>;
+  return <nav className="header-wrapper">{links}</nav>;
 };
