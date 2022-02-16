@@ -3,9 +3,19 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./index.scss";
 
-export const TEMPLATEERRORSTRING = "Please enter your";
+export const TEMPLATE_ERROR_STRING = "Please enter your";
 
 export const Registration = () => {
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email("Invalid email format")
+      .required(`${TEMPLATE_ERROR_STRING} email`),
+    password: Yup.string().required(`${TEMPLATE_ERROR_STRING} password`),
+    confirmPassword: Yup.string().required(`Please confirm your password`),
+    firstName: Yup.string().required(`${TEMPLATE_ERROR_STRING} first name`),
+    lastName: Yup.string().required(`${TEMPLATE_ERROR_STRING} last name`),
+  });
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -14,15 +24,7 @@ export const Registration = () => {
       firstName: "",
       lastName: "",
     },
-    validationSchema: Yup.object({
-      email: Yup.string()
-        .email("Invalid email format")
-        .required(`${TEMPLATEERRORSTRING} email`),
-      password: Yup.string().required(`${TEMPLATEERRORSTRING} password`),
-      confirmPassword: Yup.string().required(`Please confirm your password`),
-      firstName: Yup.string().required(`${TEMPLATEERRORSTRING} first name`),
-      lastName: Yup.string().required(`${TEMPLATEERRORSTRING} last name`),
-    }),
+    validationSchema: validationSchema,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },

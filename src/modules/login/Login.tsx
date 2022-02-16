@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { TEMPLATEERRORSTRING } from "@modules/registration/Registration";
+import { TEMPLATE_ERROR_STRING } from "@modules/registration/Registration";
 import "../registration/index.scss";
 
 export const Login = () => {
@@ -10,8 +10,8 @@ export const Login = () => {
     validationSchema: Yup.object({
       email: Yup.string()
         .email("Invalid email format")
-        .required(`${TEMPLATEERRORSTRING} email`),
-      password: Yup.string().required(`${TEMPLATEERRORSTRING} password`),
+        .required(`${TEMPLATE_ERROR_STRING} email`),
+      password: Yup.string().required(`${TEMPLATE_ERROR_STRING} password`),
     }),
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
