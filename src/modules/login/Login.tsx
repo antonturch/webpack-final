@@ -1,18 +1,19 @@
-import React from 'react';
-import {useFormik} from 'formik';
-import * as Yup from 'yup';
-import {TEMPLATEERRORSTRING} from '@Modules/registration/Registration';
-import '../registration/index.scss'
-
+import React from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { TEMPLATEERRORSTRING } from "@modules/registration/Registration";
+import "../registration/index.scss";
 
 export const Login = () => {
   const formik = useFormik({
-    initialValues: {email: '', password: '',},
+    initialValues: { email: "", password: "" },
     validationSchema: Yup.object({
-      email: Yup.string().email('Invalid email format').required(`${TEMPLATEERRORSTRING} email`),
+      email: Yup.string()
+        .email("Invalid email format")
+        .required(`${TEMPLATEERRORSTRING} email`),
       password: Yup.string().required(`${TEMPLATEERRORSTRING} password`),
     }),
-    onSubmit: values => {
+    onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
   });
@@ -26,7 +27,9 @@ export const Login = () => {
             id="email"
             name="email"
             type="email"
-            className={formik.touched.email && formik.errors.email ? 'input-error' : ''}
+            className={
+              formik.touched.email && formik.errors.email ? "input-error" : ""
+            }
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
@@ -42,7 +45,11 @@ export const Login = () => {
             id="password"
             name="password"
             type="password"
-            className={formik.touched.password && formik.errors.password ? 'input-error' : ''}
+            className={
+              formik.touched.password && formik.errors.password
+                ? "input-error"
+                : ""
+            }
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}

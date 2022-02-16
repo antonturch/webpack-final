@@ -63,7 +63,7 @@ module.exports = ({develop}) => ({
   },
   resolve: {
     alias: {
-      "@Modules": path.resolve(__dirname, 'src/modules')
+      "@modules": path.resolve(__dirname, 'src/modules')
     },
     extensions: ['.tsx', '.ts', '.js'],
   },

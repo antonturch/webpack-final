@@ -1,21 +1,29 @@
-import React from 'react';
-import {useFormik} from 'formik';
-import * as Yup from 'yup';
-import './index.scss'
+import React from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import "./index.scss";
 
-export const TEMPLATEERRORSTRING = 'Please enter your';
+export const TEMPLATEERRORSTRING = "Please enter your";
 
 export const Registration = () => {
   const formik = useFormik({
-    initialValues: {email: '', password: '', confirmPassword: '', firstName: '', lastName: ''},
+    initialValues: {
+      email: "",
+      password: "",
+      confirmPassword: "",
+      firstName: "",
+      lastName: "",
+    },
     validationSchema: Yup.object({
-      email: Yup.string().email('Invalid email format').required(`${TEMPLATEERRORSTRING} email`),
+      email: Yup.string()
+        .email("Invalid email format")
+        .required(`${TEMPLATEERRORSTRING} email`),
       password: Yup.string().required(`${TEMPLATEERRORSTRING} password`),
       confirmPassword: Yup.string().required(`Please confirm your password`),
       firstName: Yup.string().required(`${TEMPLATEERRORSTRING} first name`),
       lastName: Yup.string().required(`${TEMPLATEERRORSTRING} last name`),
     }),
-    onSubmit: values => {
+    onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
   });
@@ -23,14 +31,15 @@ export const Registration = () => {
     <div className="container">
       <h1>Sign up to continue</h1>
       <form onSubmit={formik.handleSubmit}>
-
         <div className="form-row">
           <label htmlFor="email">Email</label>
           <input
             id="email"
             name="email"
             type="email"
-            className={formik.touched.email && formik.errors.email ? 'input-error' : ''}
+            className={
+              formik.touched.email && formik.errors.email ? "input-error" : ""
+            }
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
@@ -46,7 +55,11 @@ export const Registration = () => {
             id="password"
             name="password"
             type="password"
-            className={formik.touched.password && formik.errors.password ? 'input-error' : ''}
+            className={
+              formik.touched.password && formik.errors.password
+                ? "input-error"
+                : ""
+            }
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
@@ -62,8 +75,11 @@ export const Registration = () => {
             id="confirmPassword"
             name="confirmPassword"
             type="password"
-            className={formik.touched.confirmPassword && formik.errors.confirmPassword ? 'input-error'
-              : ''}
+            className={
+              formik.touched.confirmPassword && formik.errors.confirmPassword
+                ? "input-error"
+                : ""
+            }
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.confirmPassword}
@@ -82,7 +98,11 @@ export const Registration = () => {
             id="firstName"
             name="firstName"
             type="text"
-            className={formik.touched.firstName && formik.errors.firstName ? 'input-error' : ''}
+            className={
+              formik.touched.firstName && formik.errors.firstName
+                ? "input-error"
+                : ""
+            }
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.firstName}
@@ -98,7 +118,11 @@ export const Registration = () => {
             id="lastName"
             name="lastName"
             type="text"
-            className={formik.touched.lastName && formik.errors.lastName ? 'input-error' : ''}
+            className={
+              formik.touched.lastName && formik.errors.lastName
+                ? "input-error"
+                : ""
+            }
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.lastName}
@@ -113,4 +137,3 @@ export const Registration = () => {
     </div>
   );
 };
-

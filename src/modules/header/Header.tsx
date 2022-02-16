@@ -1,7 +1,7 @@
-import {NavLink} from 'react-router-dom';
-import {ROUTE_PATHS} from '../../consts/routePaths';
-import React from 'react';
-import './index.scss'
+import { NavLink } from "react-router-dom";
+import { ROUTE_PATHS } from "../../consts/routePaths";
+import React from "react";
+import "./index.scss";
 
 const links = (
   <div className="navigation-wrapper">
@@ -10,12 +10,8 @@ const links = (
     <NavLink to={ROUTE_PATHS.SIGNUP}>Sign up</NavLink>
     <NavLink to={ROUTE_PATHS.SIGNIN}>Sign in</NavLink>
   </div>
-)
+);
 
 export const Header = () => {
-  return (
-    <section className="header-wrapper">
-      {links}
-    </section>
-  )
-}
+  return <section className="header-wrapper">{links}</section>;
+};
