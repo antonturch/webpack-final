@@ -1,11 +1,14 @@
-import React from "react";
+import { observer } from "mobx-react-lite";
+import React, { useContext } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { Context } from "../../index";
 import "./index.scss";
 
 export const TEMPLATE_ERROR_STRING = "Please enter your";
 
-export const Registration = () => {
+const Registration = () => {
+  const { store } = useContext(Context);
   const validationSchema = Yup.object({
     email: Yup.string()
       .email("Invalid email format")
@@ -26,12 +29,23 @@ export const Registration = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
+      store.registration(
+        values.firstName,
+        values.lastName,
+        values.email,
+        values.password
+      );
     },
   });
-  return (
-    <div className="registration-and-login-form-container">
-      <h1 className="registration-and-login-form__title">
+  return store.isAuth ? (
+    <div>
+      <div>{store.user.firstName}</div>
+      <div>{store.user.lastName}</div>
+    </div>
+  ) : (
+    <div className="registration-form-container">
+      <h1 className="registration-form__title">
         Sign up to continue
       </h1>
       <form onSubmit={formik.handleSubmit}>
@@ -144,9 +158,16 @@ export const Registration = () => {
             <span className="error-message">{formik.errors.lastName}</span>
           ) : null}
         </div>
-
+        <div className="registration-form__google-auth">
+          <a
+            className="registration-form__google-auth--link"
+            href={"http://localhost:5000/auth/google"}
+          >
+            Continue with Google
+          </a>
+        </div>
         <button
-          className="registration-and-login-form__submit-btn"
+          className="registration-form__submit-btn"
           type="submit"
         >
           Submit
@@ -155,3 +176,5 @@ export const Registration = () => {
     </div>
   );
 };
+
+export default observer(Registration);

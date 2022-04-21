@@ -1,6 +1,24 @@
 @import "./src/styles/color-palette";
 
 .products-wrapper {
-  font-size: 2rem;
   color: $text-color;
+}
+
+.product {
+  width: 90%;
+  margin: 2rem;
+  display: flex;
+}
+
+.product__add-button {
+  height: 2rem;
+}
+
+.product__img {
+  width: 80px;
+  height: auto;
+  margin: 0 1.5rem 0 1rem;
+}
+
+.product__info {
 }
