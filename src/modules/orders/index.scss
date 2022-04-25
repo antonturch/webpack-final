@@ -1,6 +1,9 @@
 @import "./src/styles/color-palette";
 
-.orders-wrapper {
+.orders {
   font-size: 2rem;
   color: $text-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
