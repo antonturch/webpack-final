@@ -1,0 +1,25 @@
+@import "../../../styles/color-palette";
+
+.confirm-buy {
+  font-size: 2rem;
+  color: $text-color;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .confirm-buy__title {
+
+  }
+
+  .confirm-buy__sub-title {
+    margin: 1rem 0;
+  }
+
+  .confirm-buy__finish-btns__btn-item {
+    width: 17.5rem;
+    height: 3rem;
+    margin: 0 1rem;
+  }
+}
+
