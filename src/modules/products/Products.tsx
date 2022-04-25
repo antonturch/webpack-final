@@ -1,46 +1,39 @@
-import React, { FC, useContext, useEffect, useState } from "react";
+import React, { FC, useContext, useEffect } from "react";
 import { observer } from "mobx-react-lite";
-import { Context } from "../../index";
-import "./index.scss";
+import { NavLink } from "react-router-dom";
 import { IProduct } from "../../services/api/types";
+import { Context } from "../../index";
+import ProductItem from "../../components/common/product/";
+import { ROUTE_PATHS } from "../../consts/routePaths";
+import "./index.scss";
 
 const Products: FC = () => {
   const { store } = useContext(Context);
-
-  const [disableBuyBtn, setDisableBuyBtn] = useState(false);
-
+  const buyBtnHandler = (el: IProduct) => {
+    store.setProductForBuy(el);
+    localStorage.setItem("productId", el.id.toString());
+  };
   useEffect(() => {
     store.getProducts();
   }, []);
 
-  const buyBtnHandler = (el: IProduct) => {
-    store.addOrder(el.id);
-    setDisableBuyBtn(true);
-  };
-
   return (
-    <div className="products-wrapper">
-      <h1>Products</h1>
-      {store.products.map((el) => (
-        <div key={el.id} className="product">
-          {disableBuyBtn || (
-            <button
-              className="product__add-button"
+    <div className="products">
+      <h1 className="products__title">Products</h1>
+      <ul>
+        {store.products.map((el) => (
+          <li key={el.id} className="products__product-item">
+            <NavLink
+              to={ROUTE_PATHS.CONFIRMBUY}
+              className="product-item__add-button"
               onClick={() => buyBtnHandler(el)}
             >
               Buy now
-            </button>
-          )}
-          <img className="product__img" src={el.img} />
-          <div className="product__info">
-            <div>{el.name}</div>
-            <div>
-              {el.price} {el.currency}
-            </div>
-            <div>{el.description}</div>
-          </div>
-        </div>
-      ))}
+            </NavLink>
+            <ProductItem product={el} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

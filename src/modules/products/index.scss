@@ -1,24 +1,18 @@
 @import "./src/styles/color-palette";
 
-.products-wrapper {
+.products {
   color: $text-color;
-}
-
-.product {
-  width: 90%;
   margin: 2rem;
-  display: flex;
-}
 
-.product__add-button {
-  height: 2rem;
-}
+  .products__product-item {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+  }
 
-.product__img {
-  width: 80px;
-  height: auto;
-  margin: 0 1.5rem 0 1rem;
-}
-
-.product__info {
+  .product-item__add-button {
+    text-decoration: none;
+    background-color: #c3e6f1;
+    border: 1px solid #5d008b;
+  }
 }
