@@ -26,6 +26,16 @@ export interface IOrder {
   productId: number;
 }
 
+export interface IFullOrder {
+  orderId: number;
+  productId: number;
+  productName: string;
+  productImg: string;
+  price: number;
+  currency: string;
+  status?: boolean;
+}
+
 export interface IDecodedUser {
   data: IUser;
   exp: number;
