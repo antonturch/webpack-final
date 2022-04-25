@@ -28,6 +28,7 @@ module.exports = ({ develop }) => ({
     path: path.resolve(__dirname, "dist"),
     assetModuleFilename: "assets/[name][ext]",
     clean: true,
+    publicPath: "/",
     // chunkFilename: '[name].chunk.js',
   },
   optimization: {

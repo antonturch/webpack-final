@@ -1,26 +1,42 @@
-import { IUser, IProduct, IOrder, IDecodedUser } from "../services/api/types";
 import { makeAutoObservable } from "mobx";
 import jwtDecode from "jwt-decode";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { login, logout, registration } from "../services/api/authService";
+import { fetchProduct, fetchProducts } from "../services/api/productsService";
 import {
-  fetchOrders,
-  fetchProducts,
-  login,
-  logout,
-  registration,
-} from "../services/api/AuthService";
+  IDecodedUser,
+  IFullOrder,
+  IProduct,
+  IUser,
+} from "../services/api/types";
 import { API_URL } from "../http";
+import {
+  addOrder,
+  fetchOrder,
+  fetchOrders,
+} from "../services/api/orderService";
 
 export default class Store {
-  user = {} as IUser;
+  user: IUser = {} as IUser;
   isAuth = false;
   products = [] as IProduct[];
-  orders = [] as IOrder[];
+  orders = [] as IFullOrder[];
+  //todo: probably next 2 lines need to refactor, but now I haven't idea how
+  productForBuy: IProduct | null = null;
+  orderForPay: IFullOrder | null = null;
   error = "";
 
   constructor() {
     makeAutoObservable(this);
+  }
+
+  setProductForBuy(product: IProduct | null) {
+    this.productForBuy = product;
+  }
+
+  setOrderForPay(order: IFullOrder) {
+    this.orderForPay = order;
   }
 
   setError(error: string) {
@@ -39,18 +55,15 @@ export default class Store {
     this.products = products;
   }
 
-  setOrders(orders: IOrder[]) {
+  setOrders(orders: IFullOrder[]) {
     this.orders = orders;
   }
 
-  getUser() {
-    return this.user;
-  }
-
-  addOrder(productId: number) {
-    const ordersString = localStorage.getItem("orderInfo");
-
-    localStorage.setItem("orderInfo", `${ordersString}${productId.toString()}`);
+  async createOrder() {
+    if (this.productForBuy) {
+      const res = await addOrder(this.user.id, this.productForBuy.id);
+      this.setOrderForPay(res.data);
+    }
   }
 
   async getProducts() {
@@ -62,10 +75,28 @@ export default class Store {
     }
   }
 
+  async getProduct(productId: string) {
+    try {
+      const response = await fetchProduct(productId);
+      this.setProductForBuy(response.data);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   async getOrders() {
     try {
       const response = await fetchOrders(this.user.id);
       this.setOrders(response.data);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async getOrder(orderId: number) {
+    try {
+      const response = await fetchOrder(orderId);
+      this.setOrderForPay(response.data);
     } catch (e) {
       console.log(e);
     }
@@ -90,7 +121,6 @@ export default class Store {
   ) {
     try {
       const response = await registration(firstName, lastName, email, password);
-      console.log(response);
       localStorage.setItem("token", response.data.accessToken);
       this.setAuth(true);
       this.setUser(response.data.user);
