@@ -1,0 +1,17 @@
+@import "../../styles/color-palette";
+
+.payment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+
+  .payment__title {
+    margin-bottom: 1rem;
+  }
+
+  .payment__pay-btn {
+    width: 17.5rem;
+    height: 3rem;
+  }
+}
