@@ -1,16 +1,17 @@
-import React, { FC, useContext, useEffect, useMemo } from "react";
+import React, { FC, useContext, useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../index";
 import Product from "../../components/common/product";
 import "./index.scss";
+import StripeContainer from "../../components/common/stripeContainer";
 
 const Payment: FC = () => {
   const { store } = useContext(Context);
   const orderId = Number(useParams().orderId);
   const productId = localStorage.getItem("productId");
   let product = useMemo(() => store.productForBuy, [store.productForBuy]);
-
+  const [showItem, setShowItem] = useState(false);
   useEffect(() => {
     store.getOrder(orderId);
   }, []);
@@ -24,7 +25,9 @@ const Payment: FC = () => {
     product = store.productForBuy;
   }
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async () => {
+    setShowItem(true);
+  };
 
   return (
     <div className="payment">
@@ -32,8 +35,15 @@ const Payment: FC = () => {
       {store.isAuth ? (
         <>
           {product && <Product product={product} />}
+          {showItem ? (
+            <StripeContainer />
+          ) : (
+            <>
+              <h3>$10.00</h3>
+            </>
+          )}
           <button className="payment__pay-btn" onClick={handleSubmit}>
-            Pay it
+            Purchase it
           </button>
         </>
       ) : (
