@@ -46,6 +46,8 @@
     "webpack-dev-server": "^4.7.3"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.9.0",
+    "@stripe/stripe-js": "^1.32.0",
     "axios": "^0.26.1",
     "formik": "^2.2.9",
     "js-cookie": "^3.0.1",
