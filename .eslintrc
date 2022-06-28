@@ -23,11 +23,12 @@
   "extends": "eslint:recommended",
   "rules": {
     // Removed rule "disallow multiple spaces in regular expressions" from recommended eslint rules
+    "no-empty-function": "off",
     "no-regex-spaces": "off",
     // Removed rule "disallow the use of debugger" from recommended eslint rules
     "no-debugger": "off",
     // Removed rule "disallow unused variables" from recommended eslint rules
-    "no-unused-vars": "off",
+    //    "no-unused-vars": "off",
     // Removed rule "disallow mixed spaces and tabs for indentation" from recommended eslint rules
     "no-mixed-spaces-and-tabs": "off",
     // Removed rule "disallow the use of undeclared variables unless mentioned in /*global */ comments" from recommended eslint rules
@@ -95,7 +96,7 @@
     // This is temporary rule that we should remove on later stage
     "@typescript-eslint/no-var-requires": 0,
     // Console usage is not allowed. Use logger instead
-    "no-console": "warn"
+    "no-console": "off"
   },
   "overrides": [
     {
@@ -113,7 +114,10 @@
       ],
       "rules": {
         "@typescript-eslint/no-explicit-any": 0,
-        "@typescript-eslint/interface-name-prefix": 0
+        "@typescript-eslint/no-unused-vars": 0,
+        "@typescript-eslint/no-empty-function": 0,
+        "@typescript-eslint/interface-name-prefix": 0,
+        "@typescript-eslint/ban-ts-comment": 0
       }
     }
   ]

@@ -1,22 +1,21 @@
-import React, {lazy, Suspense} from 'react'
-import {Route, Routes} from 'react-router-dom';
-import './app.scss'
-
-const Products = lazy(() => import('./modules/Products/Products'));
-const Order = lazy(() => import('./modules/Order/Order'));
+import React, { useContext, useEffect } from "react";
+import { Routing } from "./router";
+import { Context } from "./index";
+import Header from "@modules/header/Header";
+import "./app.scss";
 
 export const App = () => {
+  const { store } = useContext(Context);
+
+  useEffect(() => {
+    store.checkAuth();
+  }, []);
+
   return (
     <div className="app">
-      <Suspense fallback={<div>Загрузка...</div>}>
-        <Routes>
-          <Route path="/" element={<div>Main</div>}/>
-          <Route path="/products" element={<Products/>}/>
-          <Route path="/order" element={<Order/>}/>
-          <Route path="*" element={<Products/>}/>
-        </Routes>
-      </Suspense>
+      <h1>{store.isAuth ? "Пользователь авторизован" : null}</h1>
+      <Header />
+      <Routing />
     </div>
-  )
-}
-
+  );
+};

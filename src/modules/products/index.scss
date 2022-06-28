@@ -1,0 +1,18 @@
+@import "./src/styles/color-palette";
+
+.products {
+  color: $text-color;
+  margin: 2rem;
+
+  .products__product-item {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+  }
+
+  .product-item__add-button {
+    text-decoration: none;
+    background-color: #c3e6f1;
+    border: 1px solid #5d008b;
+  }
+}

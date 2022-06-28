@@ -1,0 +1,24 @@
+@import "../../../styles/color-palette";
+
+.order-item {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+  min-width: 35rem;
+
+  .order-item__title {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+  }
+
+  .order-item__device {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .order-item__device__img {
+    width: 100px;
+  }
+}
